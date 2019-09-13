@@ -1,0 +1,79 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{b1}
+\citation{b2}
+\citation{b3,b4}
+\citation{b5}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Simple MLP with W$_1$, W$_2$ weight matrices with Y as output for X$_1$, X$_2$ as inputs. For modelling addition and subtraction operations follow along with below mentioned W$_1$, W$_2$ values. No bias vector \textit  {b} assumed for this MLP and only linear activations considered.}}{1}{figure.1}}
+\newlabel{fig1}{{1}{1}{Simple MLP with W$_1$, W$_2$ weight matrices with Y as output for X$_1$, X$_2$ as inputs. For modelling addition and subtraction operations follow along with below mentioned W$_1$, W$_2$ values. No bias vector \textit {b} assumed for this MLP and only linear activations considered}{figure.1}{}}
+\citation{b6}
+\citation{b9}
+\citation{b1,b2,b10}
+\citation{b5}
+\citation{b13}
+\citation{b3,b4}
+\citation{b10,b11}
+\citation{b6,b10}
+\citation{b7}
+\citation{b8}
+\citation{b12}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {\textit  {Left: }}NAC is biased with learning [1, 0, 1] values i.e. it either accumulate or deduct instead of scaling, perfect for addition \& subtraction operations. \textbf  {\textit  {Right: }}Approximate curve for NALU focuses on scaling up and down nature along with superimposition of [1, 0, 1] bias from NAC which is relatively better for multiply, divison \& power functions. }}{2}{figure.2}}
+\newlabel{fig2}{{2}{2}{\textbf {\textit {Left: }}NAC is biased with learning [1, 0, 1] values i.e. it either accumulate or deduct instead of scaling, perfect for addition \& subtraction operations. \textbf {\textit {Right: }}Approximate curve for NALU focuses on scaling up and down nature along with superimposition of [1, 0, 1] bias from NAC which is relatively better for multiply, divison \& power functions}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{section.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}CalcNet}{2}{section.3}}
+\citation{b5}
+\citation{b5}
+\citation{b5}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {\textit  {Top-Left: }}NAC/NALU based MLP module for binary operator. \textbf  {\textit  {Top-Right: }}NAC/NALU based MLP module for unary operator. \textbf  {\textit  {Bottom-Left: }} For f(x)=a+b/c*$\sqrt  {d}$-e+f\textsuperscript  {2} the CalcNet algorithm proceed in the specified manner with errors propagating in additive fashion. \textbf  {\textit  {Bottom-Right: }} Shows abstract blackbox representation with any number of inputs \& operators from which output \& error information can be utilized. }}{3}{figure.3}}
+\newlabel{fig3}{{3}{3}{\textbf {\textit {Top-Left: }}NAC/NALU based MLP module for binary operator. \textbf {\textit {Top-Right: }}NAC/NALU based MLP module for unary operator. \textbf {\textit {Bottom-Left: }} For f(x)=a+b/c*$\sqrt {d}$-e+f\textsuperscript {2} the CalcNet algorithm proceed in the specified manner with errors propagating in additive fashion. \textbf {\textit {Bottom-Right: }} Shows abstract blackbox representation with any number of inputs \& operators from which output \& error information can be utilized}{figure.3}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces CalcNet's Algorithm Pipeline}}{3}{algocf.1}}
+\citation{b5}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experiments}{4}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Golden Ratio based variants of NAC \& NALU}{4}{subsection.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Golden Ratio($\phi $) based NAC \& NALU units with smoother slopes as compared to Vanilla NAC \& NALU units and lesser plateau saturation of values around [-1, 0, 1] unlike in Figure \ref  {fig2}. We define our newly created units as G-NAC and G-NALU respectively where \textit  {G} signifies their golden ratio base instead of an exponential one.}}{4}{figure.4}}
+\newlabel{fig4}{{4}{4}{Golden Ratio($\phi $) based NAC \& NALU units with smoother slopes as compared to Vanilla NAC \& NALU units and lesser plateau saturation of values around [-1, 0, 1] unlike in Figure \ref {fig2}. We define our newly created units as G-NAC and G-NALU respectively where \textit {G} signifies their golden ratio base instead of an exponential one}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces MLP model with NAC/NALU units as hidden and output layers for learning static arithmetic tasks.}}{4}{figure.5}}
+\newlabel{fig5}{{5}{4}{MLP model with NAC/NALU units as hidden and output layers for learning static arithmetic tasks}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces \textbf  {Result summary for static arithmetic tasks}}}{4}{table.1}}
+\newlabel{tab:table1}{{I}{4}{\textbf {Result summary for static arithmetic tasks}}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Evaluating complex expressions}{5}{subsection.4.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces \textbf  {Relative Errors for CalcNet Variants}}}{5}{table.2}}
+\newlabel{tab:table2}{{II}{5}{\textbf {Relative Errors for CalcNet Variants}}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces \textbf  {Result summarization for \textit  {F(x)} evaluation}}}{5}{table.3}}
+\newlabel{tab:table3}{{III}{5}{\textbf {Result summarization for \textit {F(x)} evaluation}}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Evaluating biquadratic equations}{5}{subsection.4.3}}
+\bibcite{b1}{1}
+\bibcite{b2}{2}
+\bibcite{b3}{3}
+\bibcite{b4}{4}
+\bibcite{b5}{5}
+\bibcite{b6}{6}
+\bibcite{b7}{7}
+\bibcite{b8}{8}
+\bibcite{b9}{9}
+\bibcite{b10}{10}
+\bibcite{b11}{11}
+\bibcite{b12}{12}
+\bibcite{b13}{13}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces \textbf  {Mean Square Error and Standard Deviations for predicting $Y_i$ values for (3)}}}{6}{table.4}}
+\newlabel{tab:table4}{{IV}{6}{\textbf {Mean Square Error and Standard Deviations for predicting $Y_i$ values for (3)}}{table.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion and Future Scope}{6}{section.5}}
+\@writefile{toc}{\contentsline {section}{References}{6}{section*.1}}

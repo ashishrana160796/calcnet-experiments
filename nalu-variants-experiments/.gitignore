@@ -1,2 +1,13 @@
+# Output Files from the arithmatic_experiments.py script.
 *.h5
-*.txt 
+*.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+__pycache__/
+
+
+# IPython
+profile_default/
+ipython_config.py
+ 

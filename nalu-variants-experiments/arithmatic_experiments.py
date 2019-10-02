@@ -139,32 +139,26 @@ def get_bin_data(N, op):
     trX = np.random.uniform(-10, 10, (N, 2))
     a = trX[:, :split].sum(1)
     b = trX[:, split:].sum(1)
-    print(a.min(), a.max(), b.min(), b.max())
     trY = op(a, b)[:, None]
     teX = np.random.uniform(-50,50, (N, 2)) 
     a = teX[:, :split].sum(1)
     b = teX[:, split:].sum(1)
-    print(a.min(), a.max(), b.min(), b.max())
     teY = op(a, b)[:, None]
     return (trX, trY), (teX, teY)
 
 
 def get_un_data(N, op):
     trX = np.random.uniform(0, 10, (N, 1))
-    print(trX.min(), trX.max())
     trY = op(trX)
     teX = np.random.uniform(0,50, (N, 1)) 
-    print(teX.min(), teX.max())
     teY = op(teX)
     return (trX, trY), (teX, teY)
 
 
 def get_sqrt_data(N):
     trX = np.random.uniform(0, 10, (N, 1))
-    print(trX.min(), trX.max())
     trY = np.sqrt(trX)
     teX = np.random.uniform(0,50, (N, 1)) 
-    print(teX.min(), teX.max())
     teY = np.sqrt(teX)
     return (trX, trY), (teX, teY)
 
@@ -187,7 +181,7 @@ def mse_trainer_mlp():
     un_val = 1
     # training add mlp and storing it's history values for plotting.
     m_add = mlp_model(bin_val)
-    m_add.compile("nadam", "mse", metrics=["mae", rmse])
+    m_add.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_add.optimizer.lr, 1e-2)
     hist_m_add_u = m_add.fit(trx_add, try_add, validation_data=(tex_add, tey_add), batch_size=1024, epochs=100)
     K.set_value(m_add.optimizer.lr, 1e-3)
@@ -199,7 +193,7 @@ def mse_trainer_mlp():
     
     # training sub mlp and storing it's history values for plotting.
     m_sub = mlp_model(bin_val)
-    m_sub.compile("nadam", "mse", metrics=["mae", rmse])
+    m_sub.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_sub.optimizer.lr, 1e-2)
     hist_m_sub_u = m_sub.fit(trx_sub, try_sub, validation_data=(tex_sub, tey_sub), batch_size=1024, epochs=100)
     K.set_value(m_sub.optimizer.lr, 1e-3)
@@ -211,7 +205,7 @@ def mse_trainer_mlp():
 
     # training mul mlp and storing it's history values for plotting.
     m_mul = mlp_model(bin_val)
-    m_mul.compile("nadam", "mse", metrics=["mae", rmse])
+    m_mul.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_mul.optimizer.lr, 1e-2)
     hist_m_mul_u = m_mul.fit(trx_mul, try_mul, validation_data=(tex_mul, tey_mul), batch_size=1024, epochs=100)
     K.set_value(m_mul.optimizer.lr, 1e-3)
@@ -223,7 +217,7 @@ def mse_trainer_mlp():
     
     # training div mlp and storing it's history values for plotting.
     m_div = mlp_model(bin_val)
-    m_div.compile("nadam", "mse", metrics=["mae", rmse])
+    m_div.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_div.optimizer.lr, 1e-2)
     hist_m_div_u = m_div.fit(trx_div, try_div, validation_data=(tex_div, tey_div), batch_size=1024, epochs=100)
     K.set_value(m_div.optimizer.lr, 1e-3)
@@ -235,7 +229,7 @@ def mse_trainer_mlp():
     
     # training sqr mlp and storing it's history values for plotting.
     m_sqr = mlp_model(un_val)
-    m_sqr.compile("nadam", "mse", metrics=["mae", rmse])
+    m_sqr.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_sqr.optimizer.lr, 1e-2)
     hist_m_sqr_u = m_sqr.fit(trx_sqr, try_sqr, validation_data=(tex_sqr, tey_sqr), batch_size=1024, epochs=100)
     K.set_value(m_sqr.optimizer.lr, 1e-3)
@@ -247,7 +241,7 @@ def mse_trainer_mlp():
 
     # training qrt mlp and storing it's history values for plotting.
     m_qrt = mlp_model(un_val)
-    m_qrt.compile("nadam", "mse", metrics=["mae", rmse])
+    m_qrt.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_qrt.optimizer.lr, 1e-2)
     hist_m_qrt_u = m_qrt.fit(trx_qrt, try_qrt, validation_data=(tex_qrt, tey_qrt), batch_size=1024, epochs=100)
     K.set_value(m_qrt.optimizer.lr, 1e-3)
@@ -268,7 +262,7 @@ def rmse_trainer_mlp():
     un_val = 1
     # training add mlp and storing it's history values for plotting.
     m_add = mlp_model(bin_val)
-    m_add.compile("nadam", rmse, metrics=["mae", rmse])
+    m_add.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_add.optimizer.lr, 1e-2)
     hist_m_add_u = m_add.fit(trx_add, try_add, validation_data=(tex_add, tey_add), batch_size=1024, epochs=100)
     K.set_value(m_add.optimizer.lr, 1e-3)
@@ -280,7 +274,7 @@ def rmse_trainer_mlp():
     
     # training sub mlp and storing it's history values for plotting.
     m_sub = mlp_model(bin_val)
-    m_sub.compile("nadam", rmse, metrics=["mae", rmse])
+    m_sub.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_sub.optimizer.lr, 1e-2)
     hist_m_sub_u = m_sub.fit(trx_sub, try_sub, validation_data=(tex_sub, tey_sub), batch_size=1024, epochs=100)
     K.set_value(m_sub.optimizer.lr, 1e-3)
@@ -292,7 +286,7 @@ def rmse_trainer_mlp():
 
     # training mul mlp and storing it's history values for plotting.
     m_mul = mlp_model(bin_val)
-    m_mul.compile("nadam", rmse, metrics=["mae", rmse])
+    m_mul.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_mul.optimizer.lr, 1e-2)
     hist_m_mul_u = m_mul.fit(trx_mul, try_mul, validation_data=(tex_mul, tey_mul), batch_size=1024, epochs=100)
     K.set_value(m_mul.optimizer.lr, 1e-3)
@@ -304,7 +298,7 @@ def rmse_trainer_mlp():
     
     # training div mlp and storing it's history values for plotting.
     m_div = mlp_model(bin_val)
-    m_div.compile("nadam", rmse, metrics=["mae", rmse])
+    m_div.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_div.optimizer.lr, 1e-2)
     hist_m_div_u = m_div.fit(trx_div, try_div, validation_data=(tex_div, tey_div), batch_size=1024, epochs=100)
     K.set_value(m_div.optimizer.lr, 1e-3)
@@ -316,7 +310,7 @@ def rmse_trainer_mlp():
     
     # training sqr mlp and storing it's history values for plotting.
     m_sqr = mlp_model(un_val)
-    m_sqr.compile("nadam", rmse, metrics=["mae", rmse])
+    m_sqr.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_sqr.optimizer.lr, 1e-2)
     hist_m_sqr_u = m_sqr.fit(trx_sqr, try_sqr, validation_data=(tex_sqr, tey_sqr), batch_size=1024, epochs=100)
     K.set_value(m_sqr.optimizer.lr, 1e-3)
@@ -328,7 +322,7 @@ def rmse_trainer_mlp():
     
     # training qrt mlp and storing it's history values for plotting.
     m_qrt = mlp_model(un_val)
-    m_qrt.compile("nadam", rmse, metrics=["mae", rmse])
+    m_qrt.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_qrt.optimizer.lr, 1e-2)
     hist_m_qrt_u = m_qrt.fit(trx_qrt, try_qrt, validation_data=(tex_qrt, tey_qrt), batch_size=1024, epochs=100)
     K.set_value(m_qrt.optimizer.lr, 1e-3)
@@ -336,7 +330,7 @@ def rmse_trainer_mlp():
     K.set_value(m_qrt.optimizer.lr, 1e-4)
     hist_m_qrt_t = m_qrt.fit(trx_qrt, try_qrt, validation_data=(tex_qrt, tey_qrt), batch_size=1024, epochs=100)    
     
-    m_qrt.save('mlp_rmse_sqr.h5')
+    m_qrt.save('mlp_rmse_qrt.h5')
     
     return hist_m_add_u, hist_m_add_d, hist_m_add_t, hist_m_sub_u, hist_m_sub_d, hist_m_sub_t, \
            hist_m_mul_u, hist_m_mul_d, hist_m_mul_t, hist_m_div_u, hist_m_div_d, hist_m_div_t, \
@@ -348,7 +342,7 @@ def mse_trainer_nalu(model_type):
     un_val = 1
     # training add nalu/nac and storing it's history values for plotting.
     m_add = nalu_model(model_type, bin_val)
-    m_add.compile("nadam", "mse", metrics=["mae", rmse])
+    m_add.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_add.optimizer.lr, 1e-2)
     hist_m_add_u = m_add.fit(trx_add, try_add, validation_data=(tex_add, tey_add), batch_size=1024, epochs=100)
     K.set_value(m_add.optimizer.lr, 1e-3)
@@ -369,7 +363,7 @@ def mse_trainer_nalu(model_type):
     
     # training sub nalu/nac and storing it's history values for plotting.
     m_sub = nalu_model(model_type, bin_val)
-    m_sub.compile("nadam", "mse", metrics=["mae", rmse])
+    m_sub.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_sub.optimizer.lr, 1e-2)
     hist_m_sub_u = m_sub.fit(trx_sub, try_sub, validation_data=(tex_sub, tey_sub), batch_size=1024, epochs=100)
     K.set_value(m_sub.optimizer.lr, 1e-3)
@@ -389,7 +383,7 @@ def mse_trainer_nalu(model_type):
 
     # training mul nalu/nac and storing it's history values for plotting.
     m_mul = nalu_model(model_type, bin_val)
-    m_mul.compile("nadam", "mse", metrics=["mae", rmse])
+    m_mul.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_mul.optimizer.lr, 1e-2)
     hist_m_mul_u = m_mul.fit(trx_mul, try_mul, validation_data=(tex_mul, tey_mul), batch_size=1024, epochs=100)
     K.set_value(m_mul.optimizer.lr, 1e-3)
@@ -408,7 +402,7 @@ def mse_trainer_nalu(model_type):
   
     # training div nalu/nac and storing it's history values for plotting.
     m_div = nalu_model(model_type, bin_val)
-    m_div.compile("nadam", "mse", metrics=["mae", rmse])
+    m_div.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_div.optimizer.lr, 1e-2)
     hist_m_div_u = m_div.fit(trx_div, try_div, validation_data=(tex_div, tey_div), batch_size=1024, epochs=100)
     K.set_value(m_div.optimizer.lr, 1e-3)
@@ -427,7 +421,7 @@ def mse_trainer_nalu(model_type):
 
     # training sqr nalu/nac and storing it's history values for plotting.
     m_sqr = nalu_model(model_type, un_val)
-    m_sqr.compile("nadam", "mse", metrics=["mae", rmse])
+    m_sqr.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_sqr.optimizer.lr, 1e-2)
     hist_m_sqr_u = m_sqr.fit(trx_sqr, try_sqr, validation_data=(tex_sqr, tey_sqr), batch_size=1024, epochs=100)
     K.set_value(m_sqr.optimizer.lr, 1e-3)
@@ -446,7 +440,7 @@ def mse_trainer_nalu(model_type):
 
     # training qrt nalu/nac and storing it's history values for plotting.
     m_qrt = nalu_model(model_type, un_val)
-    m_qrt.compile("nadam", "mse", metrics=["mae", rmse])
+    m_qrt.compile("nadam", "mse", metrics=["mae"])
     K.set_value(m_qrt.optimizer.lr, 1e-2)
     hist_m_qrt_u = m_qrt.fit(trx_qrt, try_qrt, validation_data=(tex_qrt, tey_qrt), batch_size=1024, epochs=100)
     K.set_value(m_qrt.optimizer.lr, 1e-3)
@@ -474,7 +468,7 @@ def rmse_trainer_nalu(model_type):
     un_val = 1
     # training add nalu/nac and storing it's history values for plotting.
     m_add = nalu_model(model_type, bin_val)
-    m_add.compile("nadam", rmse, metrics=["mae", rmse])
+    m_add.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_add.optimizer.lr, 1e-2)
     hist_m_add_u = m_add.fit(trx_add, try_add, validation_data=(tex_add, tey_add), batch_size=1024, epochs=100)
     K.set_value(m_add.optimizer.lr, 1e-3)
@@ -493,7 +487,7 @@ def rmse_trainer_nalu(model_type):
     
     # training sub nalu/nac and storing it's history values for plotting.
     m_sub = nalu_model(model_type, bin_val)
-    m_sub.compile("nadam", rmse, metrics=["mae", rmse])
+    m_sub.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_sub.optimizer.lr, 1e-2)
     hist_m_sub_u = m_sub.fit(trx_sub, try_sub, validation_data=(tex_sub, tey_sub), batch_size=1024, epochs=100)
     K.set_value(m_sub.optimizer.lr, 1e-3)
@@ -512,7 +506,7 @@ def rmse_trainer_nalu(model_type):
 
     # training mul nalu/nac and storing it's history values for plotting.
     m_mul = nalu_model(model_type, bin_val)
-    m_mul.compile("nadam", rmse, metrics=["mae", rmse])
+    m_mul.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_mul.optimizer.lr, 1e-2)
     hist_m_mul_u = m_mul.fit(trx_mul, try_mul, validation_data=(tex_mul, tey_mul), batch_size=1024, epochs=100)
     K.set_value(m_mul.optimizer.lr, 1e-3)
@@ -531,7 +525,7 @@ def rmse_trainer_nalu(model_type):
 
     # training div nalu/nac and storing it's history values for plotting.
     m_div = nalu_model(model_type, bin_val)
-    m_div.compile("nadam", rmse, metrics=["mae", rmse])
+    m_div.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_div.optimizer.lr, 1e-2)
     hist_m_div_u = m_div.fit(trx_div, try_div, validation_data=(tex_div, tey_div), batch_size=1024, epochs=100)
     K.set_value(m_div.optimizer.lr, 1e-3)
@@ -550,7 +544,7 @@ def rmse_trainer_nalu(model_type):
 
     # training sqr nalu/nac and storing it's history values for plotting.
     m_sqr = nalu_model(model_type, un_val)
-    m_sqr.compile("nadam", rmse, metrics=["mae", rmse])
+    m_sqr.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_sqr.optimizer.lr, 1e-2)
     hist_m_sqr_u = m_sqr.fit(trx_sqr, try_sqr, validation_data=(tex_sqr, tey_sqr), batch_size=1024, epochs=100)
     K.set_value(m_sqr.optimizer.lr, 1e-3)
@@ -569,7 +563,7 @@ def rmse_trainer_nalu(model_type):
 
     # training qrt nalu/nac and storing it's history values for plotting.
     m_qrt = nalu_model(model_type, un_val)
-    m_qrt.compile("nadam", rmse, metrics=["mae", rmse])
+    m_qrt.compile("nadam", rmse, metrics=[rmse])
     K.set_value(m_qrt.optimizer.lr, 1e-2)
     hist_m_qrt_u = m_qrt.fit(trx_qrt, try_qrt, validation_data=(tex_qrt, tey_qrt), batch_size=1024, epochs=100)
     K.set_value(m_qrt.optimizer.lr, 1e-3)

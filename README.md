@@ -1,9 +1,11 @@
 # Repository Description
 
-This repository contains experimental setup for experiments conducted in 'Exploring numerical cxploration with CalcNet' paper
+This repository contains experimental setup for experiments conducted in 'Exploring numerical exploration with CalcNet' paper
 that was published in ICTAI 2019. It was a submission under short paper categories involving new research ideas and concepts
 that are under development.  
- 
+
+A small introduction to motivation and whole concept behind this paper is highlighted in this [introductory presentation](CalcNet-ICTAI-2019.pdf).  
+
 # Motivation and Objective of Research
  
 The motivation behind this research is developing neural network architecture pipeline that learns fundamentally
